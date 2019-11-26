@@ -7,7 +7,6 @@ int main() {
     int bagNum = 0;
     int sum = 0;
 
-
     for(int i = 0; i < 1000; i++){
         bagNum = 0;
         head = addToList(createBag(), head);
@@ -18,12 +17,11 @@ int main() {
         }
         sum += bagNum;
     }
-    int averages;
+    double averages;
+    averages = (double)(sum) / 1000.0;
+    printf("Average copies: %f", averages);
 
 
-
-    printf("Number of bags: %d\n", bagNum);
-    printf("The Copy: green %d, orange %d, purple %d, red %d, yellow %d \n", head->data->green, head->data->orange, head->data->purple, head->data->red, head->data->yellow);
 
     return 0;
 }
