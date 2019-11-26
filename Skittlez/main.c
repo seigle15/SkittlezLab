@@ -19,7 +19,7 @@ int main() {
         }
         sum += bagNum;
         averages = (double)(sum) / runs;
-        printf("Average copies: %f\n", averages);
+        printf("Average copies: %f -> runs: %d\n", averages, runs);
 
     }
 
