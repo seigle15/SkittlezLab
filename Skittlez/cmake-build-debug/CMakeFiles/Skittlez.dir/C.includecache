@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/sean.eigle143/Desktop/Skittlez/SkittlesBag.h
+stdlib.h
+-
+stdio.h
+-
+time.h
+-
+
+/Users/sean.eigle143/Desktop/Skittlez/main.c
+SkittlesBag.h
+/Users/sean.eigle143/Desktop/Skittlez/SkittlesBag.h
+
