@@ -1,4 +1,4 @@
-# Install script for directory: /Users/sean.eigle143/Desktop/Skittlez
+# Install script for directory: /Users/sean.eigle143/Desktop/SkittlezLab/Skittlez
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/sean.eigle143/Desktop/Skittlez/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/sean.eigle143/Desktop/SkittlezLab/Skittlez/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

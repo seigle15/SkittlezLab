@@ -43,10 +43,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/sean.eigle143/Desktop/Skittlez
+CMAKE_SOURCE_DIR = /Users/sean.eigle143/Desktop/SkittlezLab/Skittlez
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/sean.eigle143/Desktop/Skittlez/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/sean.eigle143/Desktop/SkittlezLab/Skittlez/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Skittlez.dir/depend.make
@@ -59,29 +59,29 @@ include CMakeFiles/Skittlez.dir/flags.make
 
 CMakeFiles/Skittlez.dir/main.c.o: CMakeFiles/Skittlez.dir/flags.make
 CMakeFiles/Skittlez.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sean.eigle143/Desktop/Skittlez/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Skittlez.dir/main.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Skittlez.dir/main.c.o   -c /Users/sean.eigle143/Desktop/Skittlez/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sean.eigle143/Desktop/SkittlezLab/Skittlez/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Skittlez.dir/main.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Skittlez.dir/main.c.o   -c /Users/sean.eigle143/Desktop/SkittlezLab/Skittlez/main.c
 
 CMakeFiles/Skittlez.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Skittlez.dir/main.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/sean.eigle143/Desktop/Skittlez/main.c > CMakeFiles/Skittlez.dir/main.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/sean.eigle143/Desktop/SkittlezLab/Skittlez/main.c > CMakeFiles/Skittlez.dir/main.c.i
 
 CMakeFiles/Skittlez.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Skittlez.dir/main.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/sean.eigle143/Desktop/Skittlez/main.c -o CMakeFiles/Skittlez.dir/main.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/sean.eigle143/Desktop/SkittlezLab/Skittlez/main.c -o CMakeFiles/Skittlez.dir/main.c.s
 
 CMakeFiles/Skittlez.dir/Skittlesbag.c.o: CMakeFiles/Skittlez.dir/flags.make
 CMakeFiles/Skittlez.dir/Skittlesbag.c.o: ../Skittlesbag.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sean.eigle143/Desktop/Skittlez/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Skittlez.dir/Skittlesbag.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Skittlez.dir/Skittlesbag.c.o   -c /Users/sean.eigle143/Desktop/Skittlez/Skittlesbag.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/sean.eigle143/Desktop/SkittlezLab/Skittlez/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Skittlez.dir/Skittlesbag.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Skittlez.dir/Skittlesbag.c.o   -c /Users/sean.eigle143/Desktop/SkittlezLab/Skittlez/Skittlesbag.c
 
 CMakeFiles/Skittlez.dir/Skittlesbag.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Skittlez.dir/Skittlesbag.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/sean.eigle143/Desktop/Skittlez/Skittlesbag.c > CMakeFiles/Skittlez.dir/Skittlesbag.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/sean.eigle143/Desktop/SkittlezLab/Skittlez/Skittlesbag.c > CMakeFiles/Skittlez.dir/Skittlesbag.c.i
 
 CMakeFiles/Skittlez.dir/Skittlesbag.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Skittlez.dir/Skittlesbag.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/sean.eigle143/Desktop/Skittlez/Skittlesbag.c -o CMakeFiles/Skittlez.dir/Skittlesbag.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/sean.eigle143/Desktop/SkittlezLab/Skittlez/Skittlesbag.c -o CMakeFiles/Skittlez.dir/Skittlesbag.c.s
 
 # Object files for target Skittlez
 Skittlez_OBJECTS = \
@@ -95,7 +95,7 @@ Skittlez: CMakeFiles/Skittlez.dir/main.c.o
 Skittlez: CMakeFiles/Skittlez.dir/Skittlesbag.c.o
 Skittlez: CMakeFiles/Skittlez.dir/build.make
 Skittlez: CMakeFiles/Skittlez.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/sean.eigle143/Desktop/Skittlez/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable Skittlez"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/sean.eigle143/Desktop/SkittlezLab/Skittlez/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable Skittlez"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Skittlez.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -108,6 +108,6 @@ CMakeFiles/Skittlez.dir/clean:
 .PHONY : CMakeFiles/Skittlez.dir/clean
 
 CMakeFiles/Skittlez.dir/depend:
-	cd /Users/sean.eigle143/Desktop/Skittlez/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/sean.eigle143/Desktop/Skittlez /Users/sean.eigle143/Desktop/Skittlez /Users/sean.eigle143/Desktop/Skittlez/cmake-build-debug /Users/sean.eigle143/Desktop/Skittlez/cmake-build-debug /Users/sean.eigle143/Desktop/Skittlez/cmake-build-debug/CMakeFiles/Skittlez.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/sean.eigle143/Desktop/SkittlezLab/Skittlez/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/sean.eigle143/Desktop/SkittlezLab/Skittlez /Users/sean.eigle143/Desktop/SkittlezLab/Skittlez /Users/sean.eigle143/Desktop/SkittlezLab/Skittlez/cmake-build-debug /Users/sean.eigle143/Desktop/SkittlezLab/Skittlez/cmake-build-debug /Users/sean.eigle143/Desktop/SkittlezLab/Skittlez/cmake-build-debug/CMakeFiles/Skittlez.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Skittlez.dir/depend
 
