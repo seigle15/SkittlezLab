@@ -14,6 +14,7 @@ SKITTLES_BAG* createBag(){
         printf("Memory allocation failed");
 
     //randomly assign number of skittles
+    // changes to bag
     while ((bag->green + bag->orange + bag->purple + bag->red + bag->yellow) < 60){
         switch ((rand() % 5) + 1){
             case 1:
