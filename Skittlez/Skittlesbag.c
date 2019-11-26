@@ -61,11 +61,11 @@ int checkForCopy(SKITTLES_BAG_NODE *head, int bags){
         return 1;
     }
     SKITTLES_BAG_NODE *front;
-    front = head;
+    front = head->next;
     int match = 1;
 
 
-    for(int i = 0; i < bags; i++){
+    for(int i = 0; i < bags-1; i++){
         if(compareData(head->data, front->data) == 0){
             match = 0;
         }
