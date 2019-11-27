@@ -2,6 +2,7 @@
 // Created by Eigle, Sean on 2019-11-25.
 //
 #include "SkittlesBag.h"
+#include "omp.h"
 
 SKITTLES_BAG* createBag(){
     //Set rand time to produce random numbers every time
@@ -14,7 +15,8 @@ SKITTLES_BAG* createBag(){
         printf("Memory allocation failed");
 
     //randomly assign number of skittles
-    while ((bag->green + bag->orange + bag->purple + bag->red + bag->yellow) < 60){
+#pragma omp for
+    for(int i=0;i<60;i++) {
         switch ((rand() % 5) + 1){
             case 1:
                 ++bag->green;
@@ -63,17 +65,21 @@ int checkForCopy(SKITTLES_BAG_NODE *head, int bags){
     SKITTLES_BAG_NODE *front;
     front = head->next;
     int match = 1;
-
-
-    for(int i = 0; i < bags-1; ++i){
-        if(compareData(head->data, front->data) == 0){
-            match = 0;
-        }
-        else{
-            front = front->next;
-        }
-
-    }
+//#pragma omp parallel
+//	{
+//		int num_threads = omp_get_num_threads();
+//		int id = omp_get_thread_num();
+//		for(int i=0;i<id;i++){
+//			front = front->next;
+//		}
+		for (int i = 0; i < bags - 1; i++) {
+			if (compareData(head->data, front->data) == 0) {
+				match = 0;
+			} else {
+				front = front->next;
+			}
+		}
+//	}
     return match;
 
 }

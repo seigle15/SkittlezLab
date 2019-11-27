@@ -1,5 +1,5 @@
 #include "SkittlesBag.h"
-
+#include "omp.h"
 int main() {
     SKITTLES_BAG_NODE *head = NULL;
 
@@ -8,37 +8,20 @@ int main() {
     int sum = 0;
     int runs = 0;
     double averages;
-    while(1){
-        ++runs;
-        bagNum = 0;
-        head = addToList(createBag(), head);
-        bagNum++;
-        while(checkForCopy(head, bagNum) != 0){
-            head = addToList(createBag(), head);
-            ++bagNum;
-        }
-        sum += bagNum;
-        averages = (double)(sum) / runs;
-        printf("Average copies: %f -> runs: %d\n", averages, runs);
+		while (1) {
+			++runs;
+			bagNum = 0;
+			head = addToList(createBag(), head);
+			bagNum++;
+			while (checkForCopy(head, bagNum) != 0) {
+				head = addToList(createBag(), head);
+					bagNum++;
+			}
+			sum += bagNum;
+			averages = (double) (sum) / runs;
+			printf("Average copies: %f -> runs: %d\n", averages, runs);
 
-    }
-
-//    for(int i = 0; i < 1000; i++){
-//        bagNum = 0;
-//        head = addToList(createBag(), head);
-//        bagNum++;
-//        while(checkForCopy(head, bagNum) != 0){
-//            head = addToList(createBag(), head);
-//            bagNum++;
-//        }
-//        sum += bagNum;
-//    }
-//    double averages;
-//    averages = (double)(sum) / 1000.0;
-//    printf("Average copies: %f", averages);
-
-
-
+		}
     return 0;
 }
 

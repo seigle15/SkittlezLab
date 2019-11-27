@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include<time.h>
+#include "omp.h"
 
 typedef struct skittlesBag {
 int purple, yellow, green, orange, red;
