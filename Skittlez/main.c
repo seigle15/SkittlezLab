@@ -9,13 +9,13 @@ int main() {
     int runs = 0;
     double averages;
     while(1){
-        runs++;
+        ++runs;
         bagNum = 0;
         head = addToList(createBag(), head);
         bagNum++;
         while(checkForCopy(head, bagNum) != 0){
             head = addToList(createBag(), head);
-            bagNum++;
+            ++bagNum;
         }
         sum += bagNum;
         averages = (double)(sum) / runs;
@@ -41,3 +41,4 @@ int main() {
 
     return 0;
 }
+

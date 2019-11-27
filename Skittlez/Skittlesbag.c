@@ -17,19 +17,19 @@ SKITTLES_BAG* createBag(){
     while ((bag->green + bag->orange + bag->purple + bag->red + bag->yellow) < 60){
         switch ((rand() % 5) + 1){
             case 1:
-                bag->green++;
+                ++bag->green;
                 break;
             case 2:
-                bag->orange++;
+                ++bag->orange;
                 break;
             case 3:
-                bag->purple++;
+                ++bag->purple;
                 break;
             case 4:
-                bag->red++;
+                ++bag->red;
                 break;
             case 5:
-                bag->yellow++;
+                ++bag->yellow;
                 break;
         }
     }
@@ -65,7 +65,7 @@ int checkForCopy(SKITTLES_BAG_NODE *head, int bags){
     int match = 1;
 
 
-    for(int i = 0; i < bags-1; i++){
+    for(int i = 0; i < bags-1; ++i){
         if(compareData(head->data, front->data) == 0){
             match = 0;
         }
