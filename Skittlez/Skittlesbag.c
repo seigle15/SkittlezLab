@@ -15,26 +15,29 @@ SKITTLES_BAG* createBag(){
         printf("Memory allocation failed");
 
     //randomly assign number of skittles
+#pragma omp parallel
+	{
 #pragma omp for
-    for(int i=0;i<60;i++) {
-        switch ((rand() % 5) + 1){
-            case 1:
-                ++bag->green;
-                break;
-            case 2:
-                ++bag->orange;
-                break;
-            case 3:
-                ++bag->purple;
-                break;
-            case 4:
-                ++bag->red;
-                break;
-            case 5:
-                ++bag->yellow;
-                break;
-        }
-    }
+		for (int i = 0; i < 60; i++) {
+			switch ((rand() % 5) + 1) {
+				case 1:
+					++bag->green;
+					break;
+				case 2:
+					++bag->orange;
+					break;
+				case 3:
+					++bag->purple;
+					break;
+				case 4:
+					++bag->red;
+					break;
+				case 5:
+					++bag->yellow;
+					break;
+			}
+		}
+	}
     return bag;
 
 }
@@ -62,14 +65,14 @@ int checkForCopy(SKITTLES_BAG_NODE *head, int bags){
     if(bags == 1){
         return 1;
     }
-    SKITTLES_BAG_NODE *front;
-    front = head->next;
     int match = 1;
 //#pragma omp parallel
 //	{
+		SKITTLES_BAG_NODE *front;
+		front = head->next;
 //		int num_threads = omp_get_num_threads();
 //		int id = omp_get_thread_num();
-//		for(int i=0;i<id;i++){
+//		for(int j=0;j<id;j++){
 //			front = front->next;
 //		}
 		for (int i = 0; i < bags - 1; i++) {
