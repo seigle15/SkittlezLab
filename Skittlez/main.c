@@ -7,7 +7,7 @@ int main() {
     int bagNum = 0;
     int sum = 0;
     int runs = 0;
-    double averages;
+    int averages;
 		while (1) {
 			++runs;
 			bagNum = 0;
@@ -18,8 +18,8 @@ int main() {
 					bagNum++;
 			}
 			sum += bagNum;
-			averages = (double) (sum) / runs;
-			printf("Average copies: %f -> runs: %d\n", averages, runs);
+			averages += (double) (sum);
+			printf("Average copies: %f -> runs: %d\n", averages/runs, runs);
 
 		}
     return 0;
