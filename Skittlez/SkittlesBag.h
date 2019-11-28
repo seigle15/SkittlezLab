@@ -10,21 +10,24 @@
 #include<time.h>
 #include "omp.h"
 
+
 typedef struct skittlesBag {
 int purple, yellow, green, orange, red;
 } SKITTLES_BAG;
 
-typedef struct bagNode{
-    struct bagNode *next;
-    SKITTLES_BAG *data;
-} SKITTLES_BAG_NODE;
+//typedef struct bagNode{
+//    struct bagNode *next;
+//    SKITTLES_BAG *data;
+//} SKITTLES_BAG_NODE;
 
-
-SKITTLES_BAG_NODE* addToList(SKITTLES_BAG *bag, SKITTLES_BAG_NODE *head);
+static int spot = 0;
+static int size = 0;
+static SKITTLES_BAG bags[1000];
+SKITTLES_BAG* addToList(SKITTLES_BAG *bag);
 
 SKITTLES_BAG* createBag();
 
-int checkForCopy(SKITTLES_BAG_NODE *head, int bags);
+int checkForCopy(SKITTLES_BAG*);
 
 int compareData(SKITTLES_BAG *newBag, SKITTLES_BAG *oldBag);
 

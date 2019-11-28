@@ -1,20 +1,22 @@
 #include "SkittlesBag.h"
 #include "omp.h"
+#include "string.h"
 int main() {
-    SKITTLES_BAG_NODE *head = NULL;
 
-    srand(time(0));
+	SKITTLES_BAG* head;
+	srand(time(0));
     int bagNum = 0;
     int sum = 0;
     int runs = 0;
     int averages;
 		while (1) {
+//			memset(bags, 0, 1000*sizeof(*bags));
 			++runs;
-			bagNum = 0;
-			head = addToList(createBag(), head);
+			size = 0;
+			head = addToList(createBag());
 			bagNum++;
-			while (checkForCopy(head, bagNum) != 0) {
-				head = addToList(createBag(), head);
+			while (checkForCopy(head) != 0) {
+				head = addToList(createBag());
 					bagNum++;
 			}
 			sum += bagNum;
