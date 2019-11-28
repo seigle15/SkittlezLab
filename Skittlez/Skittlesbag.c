@@ -8,6 +8,13 @@ SKITTLES_BAG *createBag() {
 	//Set rand time to produce random numbers every time
 	SKITTLES_BAG *bag;
 	size++;
+	size_t nodeSize;
+
+	//create space for bag
+	nodeSize = sizeof(SKITTLES_BAG);
+	if ((bag = calloc(nodeSize, 1)) == NULL)
+		printf("Memory allocation failed");
+
 	//randomly assign number of skittles
 //#pragma omp parallel
 //	{
