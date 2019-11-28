@@ -4,17 +4,17 @@
 #include "SkittlesBag.h"
 #include "omp.h"
 
-SKITTLES_BAG* createBag(){
-    //Set rand time to produce random numbers every time
-    SKITTLES_BAG *bag;
-    size_t nodeSize;
+SKITTLES_BAG *createBag() {
+	//Set rand time to produce random numbers every time
+	SKITTLES_BAG *bag;
+	size_t nodeSize;
 
-    //create space for bag
-    nodeSize = sizeof(SKITTLES_BAG);
-    if ((bag = calloc(nodeSize, 1)) == NULL)
-        printf("Memory allocation failed");
+	//create space for bag
+	nodeSize = sizeof(SKITTLES_BAG);
+	if ((bag = calloc(nodeSize, 1)) == NULL)
+		printf("Memory allocation failed");
 
-    //randomly assign number of skittles
+	//randomly assign number of skittles
 #pragma omp parallel
 	{
 #pragma omp for
@@ -38,66 +38,74 @@ SKITTLES_BAG* createBag(){
 			}
 		}
 	}
-    return bag;
+	return bag;
 
 }
 
-SKITTLES_BAG_NODE* addToList(SKITTLES_BAG *bag, SKITTLES_BAG_NODE *head){
-    SKITTLES_BAG_NODE *node;
-    size_t nodeSize;
-    nodeSize = sizeof(SKITTLES_BAG_NODE);
-    if ((node = calloc(nodeSize, 1)) == NULL)
-        printf("Memory allocation failed");
-    node->data = bag;
-    node->next = NULL;
+SKITTLES_BAG_NODE *addToList(SKITTLES_BAG *bag, SKITTLES_BAG_NODE *head) {
+	SKITTLES_BAG_NODE *node;
+	size_t nodeSize;
+	nodeSize = sizeof(SKITTLES_BAG_NODE);
+	if ((node = calloc(nodeSize, 1)) == NULL)
+		printf("Memory allocation failed");
+	node->data = bag;
+	node->next = NULL;
 
-    if(head == NULL){
-        head = node;
-    } else{
-        node->next = head;
-        head = node;
-    }
-    return (head);
+	if (head == NULL) {
+		head = node;
+	} else {
+		node->next = head;
+		head = node;
+	}
+	return (head);
 
 }
 
-int checkForCopy(SKITTLES_BAG_NODE *head, int bags){
-    if(bags == 1){
-        return 1;
-    }
-    int match = 1;
+int checkForCopy(SKITTLES_BAG_NODE *head, int bags) {
+	if (bags == 1) {
+		return 1;
+	}
+	int match = 1;
+	int num_threads = 0;
 //#pragma omp parallel
 //	{
 		SKITTLES_BAG_NODE *front;
 		front = head->next;
-//		int num_threads = omp_get_num_threads();
-//		int id = omp_get_thread_num();
-//		for(int j=0;j<id;j++){
-//			front = front->next;
-//		}
-		for (int i = 0; i < bags - 1; i++) {
+		int id = omp_get_thread_num();
+		num_threads = omp_get_num_threads();
+		for (int j = 0; j < id && front!= NULL; j++) {
+			front = front->next;
+		}
+		for (int i = id; i < bags - 1 && match != 0 ; i ++) {
 			if (compareData(head->data, front->data) == 0) {
+//				printf("Id: %d, found\n", id);
 				match = 0;
 			} else {
-				front = front->next;
+//				for(int k=0;k<num_threads && front!= NULL;k++){
+					front = front->next;
+				}
 			}
-		}
+//		}
+//		if(match==0){
+//			printf("another one\n");
+//		}
 //	}
-    return match;
-
+	return match;
 }
 
-int compareData(SKITTLES_BAG *newBag, SKITTLES_BAG *oldBag){
-    if ((newBag->orange == oldBag->orange) &&
-            (newBag->yellow == oldBag->yellow) &&
-            (newBag->green == oldBag->green) &&
-            (newBag->red == oldBag->red) &&
-            (newBag->purple == oldBag->purple)){
-        return 0;
+int compareData(SKITTLES_BAG *newBag, SKITTLES_BAG *oldBag) {
+	if ((newBag->orange == oldBag->orange) &&
+			(newBag->yellow == oldBag->yellow) &&
+			(newBag->green == oldBag->green) &&
+			(newBag->red == oldBag->red) &&
+			(newBag->purple == oldBag->purple)) {
+//		printf("Comparing %d %d %d %d %d\n", oldBag->orange, oldBag->yellow, oldBag->green, oldBag->red, oldBag->purple );
+//		printf("Comparing %d %d %d %d %d\n", newBag->orange, newBag->yellow, newBag->green, newBag->red, newBag->purple );
+//		printf("Found\n");
+		return 0;
 
-    }
-    else{
-        return 1;
-    }
-
+	} else {
+		return 1;
+	}
 }
+
