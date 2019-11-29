@@ -20,10 +20,10 @@ int purple, yellow, green, orange, red;
 //    SKITTLES_BAG *data;
 //} SKITTLES_BAG_NODE;
 
-static int spot = 0;
-static int size = 0;
-static SKITTLES_BAG bags[1000];
-SKITTLES_BAG* addToList(SKITTLES_BAG *bag);
+extern int spot;
+extern int size;
+extern SKITTLES_BAG bags[2000];
+SKITTLES_BAG* addToList(SKITTLES_BAG *head);
 
 SKITTLES_BAG* createBag();
 

@@ -4,9 +4,14 @@
 #include "SkittlesBag.h"
 #include "omp.h"
 
-SKITTLES_BAG *createBag() {
+int spot = 0;
+int size = 0;
+SKITTLES_BAG bags[2000] = {0};
+const SKITTLES_BAG empty;
+
+SKITTLES_BAG* createBag() {
 	//Set rand time to produce random numbers every time
-	SKITTLES_BAG *bag;
+	SKITTLES_BAG* bag;
 	size++;
 	size_t nodeSize;
 
@@ -19,7 +24,6 @@ SKITTLES_BAG *createBag() {
 //#pragma omp parallel
 //	{
 //#pragma omp for
-bag->green = 1;
 		for (int i = 0; i < 60; i++) {
 			switch ((rand() % 5) + 1) {
 				case 1:
@@ -44,36 +48,35 @@ bag->green = 1;
 
 }
 
-SKITTLES_BAG *addToList(SKITTLES_BAG *head) {
+SKITTLES_BAG* addToList(SKITTLES_BAG* head) {
 	bags[spot] = *head;
 	spot++;
-	return (head);
+	return head;
 }
 
-int checkForCopy(SKITTLES_BAG *head) {
+int checkForCopy(SKITTLES_BAG* head) {
 	int match = 1;
-#pragma omp parallel
-	{
-		int num_threads = omp_get_num_threads();
-		int id = omp_get_thread_num();
-		for (int i = id; i < size; i += num_threads) {
+//#pragma omp parallel
+//	{
+//		int num_threads = omp_get_num_threads();
+//		int id = omp_get_thread_num();
+		for (int i = 0; i < size-1; i ++) {
 			if (compareData(head, &bags[i]) == 0) {
 				match = 0;
 			}
 		}
-	}
+//	}
 		return match;
 
 	}
 
-	int compareData(SKITTLES_BAG *newBag, SKITTLES_BAG *oldBag) {
+	int compareData(SKITTLES_BAG* newBag, SKITTLES_BAG* oldBag) {
 		if ((newBag->orange == oldBag->orange) &&
 				(newBag->yellow == oldBag->yellow) &&
 				(newBag->green == oldBag->green) &&
 				(newBag->red == oldBag->red) &&
 				(newBag->purple == oldBag->purple)) {
 			return 0;
-
 		} else {
 			return 1;
 		}
