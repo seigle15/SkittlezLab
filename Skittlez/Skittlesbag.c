@@ -61,7 +61,7 @@ int checkForCopy(SKITTLES_BAG* head) {
 		int num_threads = omp_get_num_threads();
 		int id = omp_get_thread_num();
 #pragma omp for
-		for (int i = id; i < size-1; i ++) {
+		for (int i = 0; i < size-1; i ++) {
 			if (compareData(head, &bags[i]) == 0) {
 				match = 0;
 			}
