@@ -1,6 +1,6 @@
-//
-// Created by Eigle, Sean on 2019-11-25.
-//
+/* Created by Sean Eigle and Trevor Ryles
+	  11/30/19
+*/
 
 #ifndef SKITTLEZ_SKITTLESBAG_H
 #define SKITTLEZ_SKITTLESBAG_H
@@ -12,22 +12,19 @@
 
 
 typedef struct skittlesBag {
-int purple, yellow, green, orange, red;
+		int purple, yellow, green, orange, red;
 } SKITTLES_BAG;
 
-//typedef struct bagNode{
-//    struct bagNode *next;
-//    SKITTLES_BAG *data;
-//} SKITTLES_BAG_NODE;
 
 extern int spot;
 extern int size;
 extern SKITTLES_BAG bags[2000];
-SKITTLES_BAG* addToList(SKITTLES_BAG *head);
 
-SKITTLES_BAG* createBag();
+SKITTLES_BAG *addToList(SKITTLES_BAG *head);
 
-int checkForCopy(SKITTLES_BAG*);
+SKITTLES_BAG *createBag();
+
+int checkForCopy(SKITTLES_BAG *);
 
 int compareData(SKITTLES_BAG *newBag, SKITTLES_BAG *oldBag);
 
