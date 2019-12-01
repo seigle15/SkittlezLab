@@ -6,14 +6,12 @@
 #define TRUE 1
 #define FALSE 0
 
-int spot = 0;
-int size = 0;
+int position = 0;
 SKITTLES_BAG bags[2000] = {0};
 
 SKITTLES_BAG *createBag() {
 	//Set rand time to produce random numbers every time
 	SKITTLES_BAG *bag;
-	size++;
 	size_t nodeSize;
 	//create space for bag
 	nodeSize = sizeof(SKITTLES_BAG);
@@ -26,18 +24,23 @@ SKITTLES_BAG *createBag() {
 		for (int i = 0; i < 60; i++) {
 			switch ((rand() % 5) + 1) {
 				case 1:
+#pragma omp atomic
 					bag->green++;
 					break;
 				case 2:
+#pragma omp atomic
 					bag->orange++;
 					break;
 				case 3:
+#pragma omp atomic
 					bag->purple++;
 					break;
 				case 4:
+#pragma omp atomic
 					bag->red++;
 					break;
 				case 5:
+#pragma omp atomic
 					bag->yellow++;
 					break;
 			}
@@ -48,8 +51,8 @@ SKITTLES_BAG *createBag() {
 }
 
 SKITTLES_BAG *addToList(SKITTLES_BAG *head) {
-	bags[spot] = *head;
-	spot++;
+	bags[position] = *head;
+	position++;
 	return head;
 }
 
@@ -57,8 +60,9 @@ int checkForCopy(SKITTLES_BAG *head) {
 	int match = FALSE;
 #pragma omp parallel
 	{
-#pragma omp for
-		for (int i = 0; i < size - 1; i++) {
+		int thread_count = omp_get_num_threads();
+		int id = omp_get_thread_num();
+		for (int i = id; !match && i < position - 1; i += thread_count) {
 			if (compareData(head, &bags[i])) {
 				match = TRUE;
 			}

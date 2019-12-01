@@ -7,8 +7,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include<time.h>
-#include "omp.h"
+#include <time.h>
 
 
 typedef struct skittlesBag {
@@ -16,8 +15,7 @@ typedef struct skittlesBag {
 } SKITTLES_BAG;
 
 
-extern int spot;
-extern int size;
+extern int position;
 extern SKITTLES_BAG bags[2000];
 
 SKITTLES_BAG *addToList(SKITTLES_BAG *head);

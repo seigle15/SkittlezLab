@@ -9,7 +9,7 @@
 
 int main() {
 	SKITTLES_BAG *newBag;
-	srand(time(0));
+	srand(time(NULL));
 	int runs = 0;
 	double averages;
 	while (TRUE) {
@@ -21,13 +21,12 @@ int main() {
 			newBag = addToList(createBag());
 			bagNum++;
 		}
-		spot = 0;
+		position = 0;
 		sum += bagNum;
 		averages += (double) (sum);
 		runs++;
-		size = 0;
 		printf("Average copies: %f -> runs: %d\n", (averages / runs), runs);
-		memset(bags, 0, sizeof(bags));
+//		memset(bags, 0, sizeof(bags));
 	}
 	return 0;
 }
