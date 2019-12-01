@@ -86,11 +86,11 @@ int checkForCopy(SKITTLES_BAG_NODE *head, int bags) {
 			match = 0;
 		}
 		int notInitial = 0;
-	for (int i = id; i+num_threads < bags - 1 && match != 0 ; i +=num_threads) {
+		for (int i = id + num_threads; match != 0 && i < bags - 1; i += num_threads) {
 //		for (int i = 0; i < bags - 1 && match != 0 ; i ++) {
-		for(int k=0;k<num_threads ;k++){
-			front = front->next;
-		}
+			for (int k = 0; k < num_threads; k++) {
+				front = front->next;
+			}
 			if (compareData(head->data, front->data) == 0) {
 //				printf("Id: %d, found\n", id);
 				match = 0;
