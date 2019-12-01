@@ -73,18 +73,21 @@ int checkForCopy(SKITTLES_BAG_NODE *head, int bags) {
 		front = head->next;
 		int id = omp_get_thread_num();
 		num_threads = omp_get_num_threads();
-		for (int j = 0; j < id && front!= NULL; j++) {
+		for (int j = 0; id < bags - 1 && j < id; j++) {
 			front = front->next;
 		}
-	for (int i = id; i < bags - 1 && match != 0 ; i ++) {
+		if (compareData(head->data, front->data) == 0) {
+//				printf("Id: %d, found\n", id);
+			match = 0;
+		}
+	for (int i = id; i+num_threads < bags - 1 && match != 0 ; i +=num_threads) {
 //		for (int i = 0; i < bags - 1 && match != 0 ; i ++) {
+		for(int k=0;k<num_threads ;k++){
+			front = front->next;
+		}
 			if (compareData(head->data, front->data) == 0) {
 //				printf("Id: %d, found\n", id);
 				match = 0;
-			} else {
-				for(int k=0;k<num_threads && front->next!=NULL;k++){
-					front = front->next;
-				}
 			}
 		}
 //		if(match==0){
