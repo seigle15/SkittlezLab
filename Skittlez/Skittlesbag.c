@@ -21,18 +21,23 @@ SKITTLES_BAG *createBag() {
 		for (int i = 0; i < 60; i++) {
 			switch ((rand() % 5) + 1) {
 				case 1:
+#pragma omp atomic
 					++bag->green;
 					break;
 				case 2:
+#pragma omp atomic
 					++bag->orange;
 					break;
 				case 3:
+#pragma omp atomic
 					++bag->purple;
 					break;
 				case 4:
+#pragma omp atomic
 					++bag->red;
 					break;
 				case 5:
+#pragma omp atomic
 					++bag->yellow;
 					break;
 			}
@@ -80,6 +85,7 @@ int checkForCopy(SKITTLES_BAG_NODE *head, int bags) {
 //				printf("Id: %d, found\n", id);
 			match = 0;
 		}
+		int notInitial = 0;
 	for (int i = id; i+num_threads < bags - 1 && match != 0 ; i +=num_threads) {
 //		for (int i = 0; i < bags - 1 && match != 0 ; i ++) {
 		for(int k=0;k<num_threads ;k++){
