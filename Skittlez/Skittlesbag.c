@@ -15,34 +15,34 @@ SKITTLES_BAG *createBag() {
 		printf("Memory allocation failed");
 
 	//randomly assign number of skittles
-#pragma omp parallel
-	{
-#pragma omp for
+//#pragma omp parallel
+//	{
+//#pragma omp for
 		for (int i = 0; i < 60; i++) {
 			switch ((rand() % 5) + 1) {
 				case 1:
-#pragma omp atomic
+//#pragma omp atomic
 					++bag->green;
 					break;
 				case 2:
-#pragma omp atomic
+//#pragma omp atomic
 					++bag->orange;
 					break;
 				case 3:
-#pragma omp atomic
+//#pragma omp atomic
 					++bag->purple;
 					break;
 				case 4:
-#pragma omp atomic
+//#pragma omp atomic
 					++bag->red;
 					break;
 				case 5:
-#pragma omp atomic
+//#pragma omp atomic
 					++bag->yellow;
 					break;
 			}
 		}
-	}
+//	}
 	return bag;
 
 }
