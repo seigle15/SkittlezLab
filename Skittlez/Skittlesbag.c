@@ -3,6 +3,7 @@
 */
 #include "SkittlesBag.h"
 #include "omp.h"
+
 #define TRUE 1
 #define FALSE 0
 
@@ -18,32 +19,23 @@ SKITTLES_BAG *createBag() {
 	if ((bag = calloc(nodeSize, TRUE)) == NULL)
 		printf("Memory allocation failed");
 	//randomly assign number of skittles
-#pragma omp parallel
-	{
-#pragma omp for
-		for (int i = 0; i < 60; i++) {
-			switch ((rand() % 5) + 1) {
-				case 1:
-#pragma omp atomic
-					bag->green++;
-					break;
-				case 2:
-#pragma omp atomic
-					bag->orange++;
-					break;
-				case 3:
-#pragma omp atomic
-					bag->purple++;
-					break;
-				case 4:
-#pragma omp atomic
-					bag->red++;
-					break;
-				case 5:
-#pragma omp atomic
-					bag->yellow++;
-					break;
-			}
+	for (int i = 0; i < 60; i++) {
+		switch ((rand() % 5) + 1) {
+			case 1:
+				bag->green++;
+				break;
+			case 2:
+				bag->orange++;
+				break;
+			case 3:
+				bag->purple++;
+				break;
+			case 4:
+				bag->red++;
+				break;
+			case 5:
+				bag->yellow++;
+				break;
 		}
 	}
 	return bag;
