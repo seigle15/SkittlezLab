@@ -3,7 +3,6 @@
 int main() {
     SKITTLES_BAG_NODE *head = NULL;
 
-    srand(time(0));
     int sum = 0;
     int runs = 0;
 	  double averages;

@@ -16,10 +16,10 @@ SKITTLES_BAG *createBag() {
 
 	//randomly assign number of skittles
 //#pragma omp parallel
-//	{
+	{
 //#pragma omp for
 		for (int i = 0; i < 60; i++) {
-			switch ((rand() % 5) + 1) {
+			switch (arc4random_uniform(5) + 1) {
 				case 1:
 //#pragma omp atomic
 					++bag->green;
@@ -42,7 +42,7 @@ SKITTLES_BAG *createBag() {
 					break;
 			}
 		}
-//	}
+	}
 	return bag;
 
 }
@@ -72,25 +72,25 @@ int checkForCopy(SKITTLES_BAG_NODE *head, int bags) {
 	}
 	int match = 1;
 	int num_threads = 0;
-#pragma omp parallel
-	{
+//#pragma omp parallel
+//	{
 		SKITTLES_BAG_NODE *front;
 		front = head->next;
-		int id = omp_get_thread_num();
-		num_threads = omp_get_num_threads();
-		for (int j = 0; id < bags - 1 && j < id; j++) {
-			front = front->next;
-		}
-		if (compareData(head->data, front->data) == 0) {
-//				printf("Id: %d, found\n", id);
-			match = 0;
-		}
+//		int id = omp_get_thread_num();
+//		num_threads = omp_get_num_threads();
+//		for (int j = 0; id < bags - 1 && j < id; j++) {
+//			front = front->next;
+//		}
+//		if (compareData(head->data, front->data) == 0) {
+////				printf("Id: %d, found\n", id);
+//			match = 0;
+//		}
 		int notInitial = 0;
-		for (int i = id + num_threads; match != 0 && i < bags - 1; i += num_threads) {
-//		for (int i = 0; i < bags - 1 && match != 0 ; i ++) {
-			for (int k = 0; k < num_threads; k++) {
+		//for (int i = id + num_threads; match != 0 && i < bags - 1; i += num_threads) {
+		for (int i = 0; i < bags - 1 && match != 0 ; i ++) {
+			//for (int k = 0; k < num_threads; k++) {
 				front = front->next;
-			}
+			//}
 			if (compareData(head->data, front->data) == 0) {
 //				printf("Id: %d, found\n", id);
 				match = 0;
@@ -99,7 +99,7 @@ int checkForCopy(SKITTLES_BAG_NODE *head, int bags) {
 //		if(match==0){
 //			printf("another one\n");
 //		}
-	}
+	//}
 	return match;
 }
 
