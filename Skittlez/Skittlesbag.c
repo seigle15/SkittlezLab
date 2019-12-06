@@ -2,13 +2,9 @@
 	  11/30/19
 */
 #include "SkittlesBag.h"
-#include "omp.h"
 
 #define TRUE 1
 #define FALSE 0
-
-int position = 0;
-SKITTLES_BAG bags[2000] = {0};
 
 SKITTLES_BAG *createBag() {
 	//Set rand time to produce random numbers every time
@@ -20,7 +16,7 @@ SKITTLES_BAG *createBag() {
 		printf("Memory allocation failed");
 	//randomly assign number of skittles
 	for (int i = 0; i < 60; i++) {
-		switch ((rand() % 5) + 1) {
+		switch (arc4random_uniform(5) + 1) {
 			case 1:
 				bag->green++;
 				break;
@@ -42,24 +38,21 @@ SKITTLES_BAG *createBag() {
 
 }
 
-SKITTLES_BAG *addToList(SKITTLES_BAG *head) {
+int addToList(SKITTLES_BAG *head, SKITTLES_BAG bags[], int position) {
 	bags[position] = *head;
 	position++;
-	return head;
+	return position;
 }
 
-int checkForCopy(SKITTLES_BAG *head) {
+int checkForCopy(SKITTLES_BAG *head, SKITTLES_BAG bags[], int position) {
 	int match = FALSE;
-#pragma omp parallel
-	{
-		int thread_count = omp_get_num_threads();
-		int id = omp_get_thread_num();
-		for (int i = id; !match && i < position - 1; i += thread_count) {
+    for (int i = 0; !match && i < position - 1; ++i){
+		//for (int i = id; !match && i < position - 1; i += thread_count) {
 			if (compareData(head, &bags[i])) {
 				match = TRUE;
 			}
 		}
-	}
+
 	return match;
 
 }

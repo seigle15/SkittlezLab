@@ -7,8 +7,6 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <time.h>
-
 
 typedef struct skittlesBag {
 		int purple, yellow, green, orange, red;
@@ -18,11 +16,11 @@ typedef struct skittlesBag {
 extern int position;
 extern SKITTLES_BAG bags[2000];
 
-SKITTLES_BAG *addToList(SKITTLES_BAG *head);
+int addToList(SKITTLES_BAG *head, SKITTLES_BAG bag[], int position);
 
 SKITTLES_BAG *createBag();
 
-int checkForCopy(SKITTLES_BAG *);
+int checkForCopy(SKITTLES_BAG *head, SKITTLES_BAG bags[], int position);
 
 int compareData(SKITTLES_BAG *newBag, SKITTLES_BAG *oldBag);
 
