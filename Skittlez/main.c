@@ -80,7 +80,7 @@ int main() {
 			// while no copies of bags have been found
 			// open a new bag, add it to the collection of bags, and compare it to the other bags
 			while (!checkForCopy(newBag=createBag(), bags, bagNum=addToList(newBag, bags, bagNum))) {
-//				++bagNum;
+			 // stops when a copy has been found
 			}
 			// once a copy has been found
 			// add the amount of newly opened bags
