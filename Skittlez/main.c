@@ -17,7 +17,7 @@
 
 #define TRUE 1
 #define FALSE 0
-#define RELAY_NUM 1000
+#define RELAY_NUM 4000
 
 int main() {
 	/*
