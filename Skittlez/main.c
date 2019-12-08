@@ -44,7 +44,6 @@ int main() {
 	int totalRuns = 0;
 	double totalBagCount = 0;
 	int collectData = 0;
-	int num_threads = omp_get_num_threads();
 
 #pragma omp parallel
 	{
@@ -79,7 +78,8 @@ int main() {
 			bagNum = addToList(newBag, bags, bagNum);
 			// while no copies of bags have been found
 			// open a new bag, add it to the collection of bags, and compare it to the other bags
-			while (!checkForCopy(newBag=createBag(), bags, bagNum=addToList(newBag, bags, bagNum))) {
+			while (!checkForCopy(newBag=createBag(), bags, bagNum)) {
+                bagNum=addToList(newBag, bags, bagNum);
 			 // stops when a copy has been found
 			}
 			// once a copy has been found
@@ -94,7 +94,7 @@ int main() {
 				totalBagCount += bagCount;
 				totalRuns += runs;
 				++collectData;
-				if (collectData == num_threads) {
+				if (collectData == omp_get_num_threads()) {
 					printf("Average of all Averages %f -- Total Runs %d\n", totalBagCount / totalRuns, totalRuns);
 					collectData = 0;
 				}
