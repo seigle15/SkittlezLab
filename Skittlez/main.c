@@ -44,9 +44,14 @@ int main() {
 	int totalRuns = 0;
 	double totalBagCount = 0;
 	int collectData = 0;
-
+	int num_threads = 0;
+	
 #pragma omp parallel
 	{
+		// assign num_threads only once at start
+		if(omp_get_thread_num() == 0){
+			num_threads = omp_get_num_threads();
+		}
 		/*
 		 * Private variable declaration:
  		 * defines variables private in scope to each thread.
@@ -93,8 +98,12 @@ int main() {
 			if (runs % RELAY_NUM == 0) {
 				totalBagCount += bagCount;
 				totalRuns += runs;
+				// reset the number of runs and bagCount
+				// so that data is not over represented
+				runs = 0;
+				bagCount = 0;
 				++collectData;
-				if (collectData == omp_get_num_threads()) {
+				if (collectData == num_threads) {
 					printf("Average of all Averages %f -- Total Runs %d\n", totalBagCount / totalRuns, totalRuns);
 					collectData = 0;
 				}
